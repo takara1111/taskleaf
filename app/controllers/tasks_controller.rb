@@ -28,9 +28,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params)
-    task.save!
-    redirect_to tasks_url, notice: "タスク「#{task.name}」をとうろくしたよ"
+    # エラーが発生した際、else以下のrender処理で再び入力した値を渡すため、インスタンス変数に格納する
+    # また、Taskオブジェクトの抱えるエラーメッセージをユーザーに見せることもできる
+    @task = Task.new(task_params)
+
+    if @task.save
+      redirect_to @task, notice: "タスク「#{task.name}」をとうろくしたよ"      
+    else
+      # エラー発生の場合には、画面を再表示して再入力を促す。
+      render :new
+    end
   end
 
     private
