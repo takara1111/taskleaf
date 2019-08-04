@@ -13,6 +13,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    reset_session
+    redirect_to root_path, notice: 'ログアウトしたよ'
+  end
+
     private
     # 送られてきたパラメータを安全化するメソッド
     def session_params
