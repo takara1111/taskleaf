@@ -8,7 +8,7 @@ class Task < ApplicationRecord
 
     private
     def validate_name_not_including_conma
-      errors.add(:name, 'にカンマを含めることはできないっすよ' if name&.include?(','))
+      errors.add(:name, 'にカンマを含めることはできないっすよ') if name&.include?(',')
     end
 
     # def set_nameless_name
