@@ -1,0 +1,25 @@
+- if user.errors.present?
+  ul#error_explanation
+    - user.errors.full_messages.each do |message|
+      li= message
+
+/ インスタンス変数でなく、localsを使ってパーシャル呼び出し先から変数を受け取る。
+/ インスタンス変数を使うとコントローラの修正があった時にハマる
+= form_with model: [:admin, user], local: true do |f|
+  .form-group
+    = f.label :name, 'なまえ'
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :email, 'めーるあどれす'
+    = f.text_field :email, class: 'form-control'
+  .form-check
+    = f.label :admin, class: 'form-check-label' do
+      = f.check_box :admin, class:'form-check-input'
+      |管理者権限
+  .form-group
+    = f.label :password, 'ぱすわーど'
+    = f.text_field :password, class: 'form-control'
+  .form-group
+    = f.label :password, '確認'
+    = f.text_field :password, class: 'form-control'
+  = f.submit '登録する', class:'btn btn-primary'
