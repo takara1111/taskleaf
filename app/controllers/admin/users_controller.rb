@@ -26,9 +26,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(user_params)
+    @user = User.find(params[:id])
 
-    if @user.save
+    if @user.update(user_params)
       redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」さんを登録しました。"
     else
       render :new
@@ -40,7 +40,7 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」さんを削除しました。"
   end
-  
+
     private
     
     def user_params
