@@ -17,7 +17,7 @@
 require 'capybara/rspec'
 
 RSpec.configure do |config|
-  # テストにおけるブラウザ相当の昨日にHeadless Chromeを使う
+  # テストにおけるブラウザ相当の機能にHeadless Chromeを使う
   config.before(:each, type: :system) do
     driven_by :selenium_chrome_headless
   end
