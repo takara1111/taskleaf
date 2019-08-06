@@ -12,7 +12,7 @@ table.table.table-hover
       td= @task.name
     tr
       th= "詳細"
-      td= simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div")
+      td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
       th= "登録日時"
       td= @task.created_at
