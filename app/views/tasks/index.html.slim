@@ -1,4 +1,24 @@
 h1 タスク登録
+
+= search_form_for @q, class: 'mb-5' do |f|
+  / タスク名検索
+  .form-gropu.row
+    = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :name_cont, class: 'form_control'
+  / 内容検索
+  .form-gropu.row
+    = f.label :description_cont, '詳細', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :description_cont, class: 'form_control'
+  / 登録日時検索
+  .form-gropu.row
+    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :created_at_gteq, class: 'form_control'
+  .form-group
+    = f.submit class: 'btn btn-outline-primary'
+
 = link_to '新規登録', new_task_path, class: 'btn btn-primary'
 
 .mb-3
