@@ -39,12 +39,22 @@ class TasksController < ApplicationController
     # ユーザーとタスクを紐付けたため、コードを以下のように変更
     @task = current_user.tasks.new(task_params)
 
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @task.save
       redirect_to @task, notice: "タスク「#{@task.name}」をとうろくしたよ"      
     else
       # エラー発生の場合には、画面を再表示して再入力を促す。
       render :new
     end
+  end
+
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
   end
 
     private
