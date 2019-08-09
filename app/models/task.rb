@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  has_one_attached :image
   # コールバック関数の呼び出し
   # before_validation :set_nameless_name
 
