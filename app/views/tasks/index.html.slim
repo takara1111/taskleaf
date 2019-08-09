@@ -25,7 +25,7 @@ h1 タスク登録
 table.table.table-hover
   thead.thead-default
     tr
-      th = "名称"
+      th = sort_link(@q, :name)
       th = "登録日時"
       th
   tbody
