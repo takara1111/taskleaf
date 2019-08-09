@@ -33,6 +33,15 @@ class Task < ApplicationRecord
     end
   end
 
+  # CSV入力機能
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      task = new
+      task.attributes = row.to_hash.slice(*csv_attributes)
+      task.save!  
+    end
+  end
+
   # カスタム用クエリメソッドの作成
   scope :recent, -> { order(created_at: :desc)}
 
