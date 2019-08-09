@@ -10,7 +10,7 @@ class Task < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     []    
-  endmailer 
+  end 
 
   validates :name, presence: true
   validates :name, length: { maximum: 30 }
