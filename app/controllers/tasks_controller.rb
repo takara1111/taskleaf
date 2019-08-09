@@ -46,6 +46,7 @@ class TasksController < ApplicationController
     end
 
     if @task.save
+      TaskMailer.creation_email(@task).deliver_now
       redirect_to @task, notice: "タスク「#{@task.name}」をとうろくしたよ"      
     else
       # エラー発生の場合には、画面を再表示して再入力を促す。
